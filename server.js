@@ -7,7 +7,8 @@ const socketio = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+// const io = socketio(server);
+const io = socketio.listen(server);
 
 
 
@@ -27,6 +28,13 @@ io.on('connection', socket => {
     socket.on('disconnect', () => {
         io.emit('message', 'A User disconnected');
     });
+
+    // Listen chat message;
+    socket.on('chatMessage', msg => {
+        io.emit('message', msg);
+    });
+
+
 });
 
 
