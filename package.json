@@ -1,0 +1,25 @@
+{
+  "name": "telecord",
+  "version": "1.0.0",
+  "description": "It is chatting application that uses socket.io",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jontyrs/TeleCord.git"
+  },
+  "author": "Rachnit Singh Jonty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jontyrs/TeleCord/issues"
+  },
+  "homepage": "https://github.com/jontyrs/TeleCord#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.27.0",
+    "socket.io": "^2.3.0"
+  }
+}
