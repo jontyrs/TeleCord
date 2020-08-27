@@ -30,6 +30,12 @@ io.on('connection', socket => {
     
         // When a client joins the server;
         socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} has joined the Chat`));
+
+        // Send users and room info
+        io.to(user.room).emit('roomUsers', {
+            room: user.room,
+            users: getUserRooms(user.room)
+        });
     });
 
     // Listen chat message;
@@ -44,10 +50,14 @@ io.on('connection', socket => {
         const leftuser = userLeaves(socket.id);
 
         if(leftuser) {
-            console.log(leftuser);
             io.to(leftuser.room).emit('message', formatMessage(botName, `${leftuser.username} disconnected`));
+            
+            // Send users and room info
+            io.to(leftuser.room).emit('roomUsers', {
+                room: leftuser.room,
+                users: getUserRooms(leftuser.room)
+            });
         }
-
     });
 });
 
