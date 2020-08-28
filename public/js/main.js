@@ -45,7 +45,10 @@ function outputMessage(msg) {
     const div = document.createElement('div');
     div.classList.add('message');
     div.innerHTML = `
-    <p class="meta">${msg.username} <span>${msg.time}</span></p>
+    <div class="d-flex justify-content-between pr-3">
+        <div class="meta">${msg.username}</div>
+        <div class="meta">${msg.time}</div>
+    </div>
     <p class="text">
         ${msg.text}
     </p>`;
@@ -58,6 +61,6 @@ function outputRoomName(room) {
     
 function outputUsers(users) {
     usersList.innerHTML = `
-    ${users.map(user => `<li> ${user.username} </li>`).join('')}
+    ${users.map(user => `<li># ${user.username} </li>`).join('')}
     `;
 }
